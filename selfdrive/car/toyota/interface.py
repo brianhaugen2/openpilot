@@ -88,7 +88,7 @@ class CarInterface(CarInterfaceBase):
       stop_and_go = True if (candidate in CAR.RAV4H) else False
       ret.safetyParam = 73
       ret.wheelbase = 2.65
-      ret.steerRatio = 16.88   # 14.5 is spec end-to-end
+      ret.steerRatio = 16.88  # 14.5 is spec end-to-end
       tire_stiffness_factor = 0.5533
       ret.mass = 3650. * CV.LB_TO_KG + STD_CARGO_KG  # mean between normal and hybrid
       ret.lateralTuning.init('lqr')
@@ -121,7 +121,7 @@ class CarInterface(CarInterfaceBase):
       tire_stiffness_factor = 0.444  # not optimized yet
       ret.mass = 4481. * CV.LB_TO_KG + STD_CARGO_KG  # mean between min and max
       ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.6], [0.1]]
-      ret.lateralTuning.pid.kf = 0.00006   # full torque for 10 deg at 80mph means 0.00007818594
+      ret.lateralTuning.pid.kf = 0.00006  # full torque for 10 deg at 80mph means 0.00007818594
 
     elif candidate in [CAR.CHR, CAR.CHRH]:
       stop_and_go = True
@@ -231,6 +231,16 @@ class CarInterface(CarInterfaceBase):
       tire_stiffness_factor = 0.517
       ret.mass = 3108 * CV.LB_TO_KG + STD_CARGO_KG  # mean between min and max
       ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.3], [0.05]]
+      ret.lateralTuning.pid.kf = 0.00007
+
+    elif candidate == CAR.LEXUS_UXH_TSS2:
+      stop_and_go = True
+      ret.safetyParam = 73
+      ret.wheelbase = 2.640
+      ret.steerRatio = 16.0  # not optimized
+      tire_stiffness_factor = 0.444  # not optimized yet
+      ret.mass = 3500. * CV.LB_TO_KG + STD_CARGO_KG
+      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.6], [0.1]]
       ret.lateralTuning.pid.kf = 0.00007
 
     ret.steerRateCost = 1.
